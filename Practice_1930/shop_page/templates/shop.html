@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}SHOP{% endblock %}
+
+{% block content %}
+    <h1>SHOP PAGE</h1>
+    <a href = "/">HOME</a>
+
+    <form method = "post" enctype="multipart/form-data">
+        <input name = "image" type = "file" accept = "image/*">
+        <input name = "name" type = "text" placeholder = "Enter name of product">
+        <button type = "submit">Create Product</button> 
+    </form>
+
+    {% for product in products %}
+        <h2>{{ product.name }}</h2>
+        <img src = "{{ url_for('shop.static', filename = 'images/' + product.name + '.png') }}" style = "width: 260px; heigth: 260px;">
+    {% endfor %}
+
+{% endblock  %}
